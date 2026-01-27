@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品展示图拼接工具 - 从下载到使用全指南</title>
+    <meta name="keywords" content="产品展示图拼接工具,下载使用指南,授权激活流程,十面图拼接步骤,红线标注教程">
+    <meta name="description" content="产品展示图拼接工具从下载到使用的完整指南：含解压、运行、授权激活、十面图拼接、红线标注全流程说明，适配Windows 64位系统！">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "微软雅黑", system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f4f9 0%, #e0e8f5 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        /* 标题样式 */
+        .title {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        /* 版本提示 */
+        .version-tip {
+            background: #fef7fb;
+            border: 1px solid #fce7f3;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 450px;
+            text-align: center;
+            color: #831843;
+            font-size: 1rem;
+        }
+        /* 按钮容器 */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            width: 100%;
+            max-width: 450px;
+        }
+        /* 核心按钮基础样式 */
+        .func-btn {
+            padding: 1.25rem 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        /* 说明类按钮样式（用户说明/操作手册） */
+        .btn-info {
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            color: #475569;
+            box-shadow: 0 4px 12px rgba(148, 163, 184, 0.2);
+        }
+        /* 下载按钮样式 */
+        .btn-download {
+            background: linear-gradient(135deg, #1677ff 0%, #0958d9 100%);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(22, 119, 255, 0.2);
+        }
+        /* 按钮 hover 动效 */
+        .func-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.15);
+            transition: left 0.3s ease;
+        }
+        .func-btn:hover::before {
+            left: 100%;
+        }
+        .btn-info:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            box-shadow: 0 6px 16px rgba(148, 163, 184, 0.3);
+        }
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(22, 119, 255, 0.3);
+        }
+        .func-btn:active {
+            transform: translateY(0);
+        }
+        .btn-info:active {
+            box-shadow: 0 4px 12px rgba(148, 163, 184, 0.2);
+        }
+        .btn-download:active {
+            box-shadow: 0 4px 12px rgba(22, 119, 255, 0.2);
+        }
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+            animation: modalFadeIn 0.3s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .close-btn {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #94a3b8;
+            transition: color 0.2s ease;
+        }
+        .close-btn:hover {
+            color: #334155;
+        }
+        .content-title {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #e2e8f0;
+            font-weight: 600;
+        }
+        p, li {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #475569;
+            margin-bottom: 0.75rem;
+        }
+        ul, ol {
+            margin-left: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        h3 {
+            margin: 1.25rem 0 0.75rem;
+            color: #334155;
+            font-weight: 600;
+        }
+        /* 命名规则样式 */
+        .naming-rule {
+            background: #f1f5f9;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 0.5rem 0;
+            font-family: "Consolas", "Monaco", monospace;
+            color: #2d3748;
+        }
+        .naming-example {
+            color: #1677ff;
+            font-family: "Consolas", "Monaco", monospace;
+        }
+        .warning-text {
+            color: #dc2626;
+            font-weight: 600;
+        }
+        .success-text {
+            color: #059669;
+            font-weight: 600;
+        }
+        /* 下载提示 */
+        .download-tip {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #64748b;
+            text-align: left;
+            line-height: 1.8;
+            max-width: 450px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+        .download-tip a {
+            color: #1677ff;
+            text-decoration: none;
+        }
+        .download-tip a:hover {
+            text-decoration: underline;
+        }
+        .tip-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        /* 套餐说明样式 */
+        .package-list {
+            background: #f7f9fc;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .package-item {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-left: 3px solid #1677ff;
+        }
+        /* 流程步骤样式 */
+        .step-box {
+            background: #f0f9ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 3px solid #38bdf8;
+        }
+        .step-title {
+            font-weight: 600;
+            color: #0c4a6e;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 网站标题 -->
+    <h1 class="title">产品展示图拼接工具</h1>
+
+    <!-- 版本选择提示 -->
+    <div class="version-tip">
+        📌 仅支持Windows64位系统 从下载到使用全流程指南
+    </div>
+
+    <!-- 核心按钮区 -->
+    <div class="btn-container">
+        <button class="func-btn btn-info" onclick="openModal('full-guide-modal')">从下载到使用全流程</button>
+        <a href="拼接图.zip" class="func-btn btn-download" download>客户端下载（压缩包）</a>
+    </div>
+
+    <!-- 详细下载提示 -->
+    <div class="download-tip">
+        <div class="tip-title">💡 第一步：下载并解压（必看）</div>
+        1. 点击上方「客户端下载」按钮，保存压缩包到电脑；<br>
+        2. 右键压缩包 → 选择「解压到当前文件夹」（<strong>不要解压到C盘系统目录</strong>）；<br>
+        3. 解压后得到「产品展示图拼接工具.exe」文件，双击即可运行。
+    </div>
+
+    <!-- 从下载到使用全流程弹窗 -->
+    <div id="full-guide-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('full-guide-modal')">&times;</span>
+            <h2 class="content-title">从下载到使用全流程指南</h2>
+            <div>
+                <!-- 步骤1：下载与解压 -->
+                <div class="step-box">
+                    <div class="step-title">步骤1：下载并解压客户端</div>
+                    <ol>
+                        <li>点击页面中的「客户端下载（压缩包）」按钮，将文件保存到电脑（建议保存到桌面）；</li>
+                        <li>找到下载的压缩包（默认名称：产品展示图拼接工具.zip），右键点击 → 选择「解压到当前文件夹」；</li>
+                        <li>解压完成后，文件夹内会出现「产品展示图拼接工具.exe」文件。</li>
+                    </ol>
+                    <p class="warning-text">⚠️ 注意：不要将文件解压到C:\Program Files、C:\Windows等系统保护目录，否则会导致保存失败！</p>
+                </div>
+
+                <!-- 步骤2：运行程序 -->
+                <div class="step-box">
+                    <div class="step-title">步骤2：运行程序</div>
+                    <ol>
+                        <li>双击「产品展示图拼接工具.exe」文件，启动程序；</li>
+                        <li>若弹出「Windows已保护你的电脑」提示：
+                            <ul>
+                                <li>点击「更多信息」→ 选择「仍要运行」（程序无病毒，仅为未签名提示）；</li>
+                            </ul>
+                        </li>
+                        <li>若程序无法启动/闪退：
+                            <ul>
+                                <li>先安装 <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank">Visual C++ 64位运行库</a>；</li>
+                                <li>再安装 <a href="https://dotnet.microsoft.com/download/dotnet-framework/net472" target="_blank">.NET Framework 4.7.2</a>；</li>
+                                <li>重启电脑后再次运行程序。</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- 步骤3：授权激活 -->
+                <div class="step-box">
+                    <div class="step-title">步骤3：授权激活（首次使用必做）</div>
+                    <ol>
+                        <li>程序启动后，进入「授权激活」界面，首先选择套餐：
+                            <div class="package-list">
+                                <div class="package-item">38元 - 30天授权</div>
+                                <div class="package-item">88元 - 90天授权</div>
+                                <div class="package-item">158元 - 180天授权</div>
+                                <div class="package-item">288元 - 365天授权</div>
+                            </div>
+                        </li>
+                        <li>选择套餐后，界面会自动显示对应金额的收款码；</li>
+                        <li>用支付宝扫码支付后，获取支付凭证（商家订单号）；</li>
+                        <li>在「激活授权」区域填写：
+                            <ul>
+                                <li>付款人姓名（需与支付时的姓名一致）</li>
+                            </ul>
+                        </li>
+                        <li>点击「激活授权」按钮，验证成功后会自动跳转到功能界面，并提示「授权激活成功！有效期X天」。</li>
+                    </ol>
+                    <p class="warning-text">⚠️ 注意：激活信息保存在「.license_data.dll」文件中（隐藏系统文件），请勿删除/修改此文件，否则需重新激活！</p>
+                </div>
+
+                <!-- 步骤4：准备十面图 -->
+                <div class="step-box">
+                    <div class="step-title">步骤4：准备需要拼接的十面图</div>
+                    <p class="success-text">✅ 新增自动重命名功能：无需手动规范命名，程序会自动识别并重命名！</p>
+                    <p>请将需要拼接的10张图片放入同一个文件夹，支持以下任意命名格式（程序会自动转为规范格式）：</p>
+                    <div class="naming-rule">1 (1).png、1(1).png、1-1.png、角度0.png、1_角度0.png</div>
+                    <div class="naming-rule">1 (2).png、1(2).png、1-2.png、角度45.png、1_角度45.png</div>
+                    <p>示例：<span class="naming-example">1 (1).png</span> → 程序自动重命名为 <span class="naming-example">1_角度0.png</span></p>
+                    <p>支持图片格式：PNG、JPG、JPEG（建议使用PNG格式，清晰度更高）</p>
+                    <p class="warning-text">⚠️ 仅需保证10张图片齐全，无需手动修改文件名，程序会自动完成重命名！</p>
+                </div>
+
+                <!-- 步骤5：拼接操作 -->
+                <div class="step-box">
+                    <div class="step-title">步骤5：开始拼接展示图</div>
+                    <ol>
+                        <li>在功能界面点击「选择图片文件夹」，选择存放十面图的文件夹；</li>
+                        <li>设置「红线宽度」：默认8像素，可输入1-20之间的整数（数值越大，红线越粗）；</li>
+                        <li>点击「开始生成展示图」按钮，程序会自动执行：
+                            <ul>
+                                <li>自动识别并重命名非标图片为规范格式；</li>
+                                <li>加载10张图片并缩放至7500×4500的画布；</li>
+                                <li>对图片进行锐化优化，提升清晰度；</li>
+                                <li>在「1_角度0.png」（正面）和「1_角度90.png」（镜腿）上添加带端点的红线标注；</li>
+                            </ul>
+                        </li>
+                        <li>重命名完成后会弹出提示框，告知哪些文件被重命名；</li>
+                        <li>拼接完成后，会提示「生成成功！文件大小：X MB」，结果保存在图片文件夹根目录，文件名为「红线优化版.jpg」。</li>
+                    </ol>
+                </div>
+
+                <!-- 步骤6：常见问题 -->
+                <div class="step-box">
+                    <div class="step-title">步骤6：常见问题解决</div>
+                    <ul>
+                        <li><strong>问题1：收款码无法显示</strong> → 检查程序所在目录是否有对应金额的qrcode_XX.png文件（如38元对应qrcode_38.png）；</li>
+                        <li><strong>问题2：拼接缺少图片</strong> → 检查文件夹内是否有10张图片，且文件名包含1 (1)~1 (10)、角度0~角度315、上/下等关键词；</li>
+                        <li><strong>问题3：红线宽度报错</strong> → 输入1-20之间的整数，不要输入字母/符号；</li>
+                        <li><strong>问题4：保存失败</strong> → 将程序移到非C盘目录（如桌面/D盘），右键以管理员身份运行；</li>
+                        <li><strong>问题5：重命名失败</strong> → 检查图片是否被其他程序占用（如PS/看图软件），关闭后重新运行；</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 交互脚本 -->
+    <script>
+        // 打开弹窗
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "flex";
+        }
+        // 关闭弹窗
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+        // 点击弹窗外部关闭
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName("modal");
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
